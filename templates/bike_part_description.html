@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="inner_content">
+        <h1>{{ bike_type_name }}</h1>
+        <p>{{ bike_part.description }}</p>
+        {% if 'username' in session and session['email'] == bike_part.user.email %}
+            <a href="{{ url_for('show_edit_bike_part', bike_part_name=bike_part.name, bike_part_id = bike_part.id) }}">Edit </a>
+            |
+            <a href="{{ url_for('delete_bike_part', bike_part_name=bike_part.name, bike_part_id = bike_part.id)}}">Delete </a>
+        {% endif %}
+    </div>
+
+{% endblock %}

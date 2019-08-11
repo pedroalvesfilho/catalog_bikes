@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="inner_content">
+        <h1>Categories</h1>
+        {% for bike_type in bike_types %}
+            <p class="list">
+                <a href="{{ url_for('show_bike_parts', bike_type_name = bike_type.name) }}">{{ bike_type.name }}</a>
+            </p>
+        {% endfor %}
+    </div>
+    <div class="divider"></div>
+    <div class="inner_content">
+        <h1>{{ bike_type.name }} Items {{ bike_part_count }} (items)</h1>
+        {% for bike_part in bike_parts %}
+            <div>
+                <p class="list">
+                    <a href="{{ url_for('show_bike_part_description', bike_type_name=bike_type.name , bike_part_name=bike_part.name) }}">{{ bike_part.name }} </a>
+                    <span class="belongs_to">({{ bike_part.bike_type.name }})</span>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
